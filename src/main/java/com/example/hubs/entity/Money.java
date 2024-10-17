@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
-@Table(schema = "HUBS", name = "MONEY_TRANSACTIONS")
-public class MoneyTransactions {
+@Table(schema = "HUBS", name = "MONEY")
+public class Money {
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -25,4 +26,7 @@ public class MoneyTransactions {
 
     @Column(name = "TRANSACTION_TYPE")
     private String transactionType;
+
+    @Column(name = "UPDATE_TIME")
+    private LocalDateTime updateTime;
 }
