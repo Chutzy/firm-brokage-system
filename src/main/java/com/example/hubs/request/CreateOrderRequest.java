@@ -1,6 +1,6 @@
 package com.example.hubs.request;
 
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
@@ -12,13 +12,13 @@ public class CreateOrderRequest {
 
     @NotNull(message = "customerId cannot be null")
     private Long customerId;
-    @NotEmpty(message = "assetName cannot be empty")
+    @NotBlank(message = "assetName cannot be blank")
     private String assetName;
-    @NotEmpty(message = "orderSide cannot be empty")
+    @NotBlank(message = "orderSide cannot be blank")
     @Pattern(regexp = "^[BS]$", message = "orderSide can be either B or S")
     private String orderSide;
-    @NotEmpty(message = "size cannot be empty")
+    @NotBlank(message = "size cannot be blank")
     private String size;
-    @NotEmpty(message = "price cannot be empty")
+    @NotBlank(message = "price cannot be blank")
     private String price;
 }

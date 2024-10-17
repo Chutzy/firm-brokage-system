@@ -1,4 +1,4 @@
-package com.example.hubs.model;
+package com.example.hubs.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-public class ListOrderModel {
+public class OrderDTO {
 
+    private Long id;
     private Long customerId;
     private String assetName;
     private String orderSide;
     private String size;
     private String price;
     private String status;
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    private LocalDateTime createDate;
 }

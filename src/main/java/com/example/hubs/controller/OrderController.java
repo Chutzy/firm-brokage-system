@@ -23,7 +23,10 @@ public class OrderController implements OrderApi {
 
     @Override
     public ListOrderResponse list(ListOrderRequest request) {
-        return mapper.map(orderService.list(mapper.map(request, ListOrderModel.class)), ListOrderResponse.class);
+        ListOrderModel listOrderModel = mapper.map(request, ListOrderModel.class);
+        listOrderModel.setStartDate(request.getStartDate().atStartOfDay());
+        listOrderModel.setEndDate(request.getEndDate().atStartOfDay());
+        return mapper.map(orderService.list(listOrderModel), ListOrderResponse.class);
     }
 
     @Override
