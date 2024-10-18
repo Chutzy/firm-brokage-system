@@ -10,6 +10,6 @@ public class AssetDTO {
     private Long id;
     private Long customerId;
     private String assetName;
-    private String size;
-    private String usableSize;
+    private Long size;
+    private Long usableSize;
 }

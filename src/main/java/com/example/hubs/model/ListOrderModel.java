@@ -12,8 +12,8 @@ public class ListOrderModel {
     private Long customerId;
     private String assetName;
     private String orderSide;
-    private String size;
-    private String price;
+    private Long size;
+    private Long price;
     private String status;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

@@ -12,5 +12,5 @@ public class ListAssetRequest {
     private Long customerId;
     private String assetName;
     private String assetSize;
-    private String usableSize;
+    private Long usableSize;
 }

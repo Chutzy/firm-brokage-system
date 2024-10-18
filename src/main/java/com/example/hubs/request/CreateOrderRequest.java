@@ -18,7 +18,7 @@ public class CreateOrderRequest {
     @Pattern(regexp = "^[BS]$", message = "orderSide can be either B or S")
     private String orderSide;
     @NotBlank(message = "size cannot be blank")
-    private String size;
+    private Long size;
     @NotBlank(message = "price cannot be blank")
-    private String price;
+    private Long price;
 }

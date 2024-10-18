@@ -10,6 +10,6 @@ public class CreateOrderModel {
     private Long customerId;
     private String assetName;
     private String orderSide;
-    private String size;
-    private String price;
+    private Long size;
+    private Long price;
 }

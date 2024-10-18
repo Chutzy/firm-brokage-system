@@ -22,8 +22,8 @@ public class Asset {
     private String assetName;
 
     @Column(name = "SIZE", nullable = false)
-    private String assetSize;
+    private Long assetSize;
 
     @Column(name = "USABLE_SIZE", nullable = false)
-    private String usableSize;
+    private Long usableSize;
 }

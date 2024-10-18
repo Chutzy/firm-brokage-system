@@ -21,11 +21,12 @@ public class Customer {
     @Column(name = "SURNAME", nullable = false)
     private String surname;
 
-    @Column(name = "EMAIL", nullable = false)
-    private String email;
+    @Column(name = "USERNAME", nullable = false)
+    private String username;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-
+    @Column(name = "ROLE", nullable = false)
+    private String role;
 }

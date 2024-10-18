@@ -27,14 +27,17 @@ public class Order {
     private String orderSide;
 
     @Column(name = "SIZE", nullable = false)
-    private String size;
+    private Long size;
 
     @Column(name = "PRICE", nullable = false)
-    private String price;
+    private Long price;
 
     @Column(name = "STATUS", nullable = false)
     private String status;
 
-    @Column(name = "CREATE_DATE", nullable = false)
-    private LocalDateTime createDate;
+    @Column(name = "CREATE_TIME")
+    private LocalDateTime createTime;
+
+    @Column(name = "UPDATE_TIME")
+    private LocalDateTime updateTime;
 }
