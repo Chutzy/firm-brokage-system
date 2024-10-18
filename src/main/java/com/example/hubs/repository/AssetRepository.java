@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AssetRepository extends JpaRepository<Asset, Long> {
 
@@ -15,4 +16,8 @@ public interface AssetRepository extends JpaRepository<Asset, Long> {
             "and (a.assetSize is null or a.assetSize = :#{#model.assetSize})" +
             "and (a.usableSize is null or a.usableSize = :#{#model.usableSize})")
     List<Asset> findAssetsByModel(ListAssetModel model);
+
+    Optional<Asset> findAssetByCustomerId(Long customerId);
+
+    Optional<Asset> findAssetByCustomerIdAndAssetName(Long customerId, String assetName);
 }

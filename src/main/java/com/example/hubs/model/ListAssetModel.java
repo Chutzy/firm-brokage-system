@@ -11,6 +11,6 @@ public class ListAssetModel {
 
     private Long customerId;
     private String assetName;
-    private String assetSize;
+    private Long assetSize;
     private Long usableSize;
 }
