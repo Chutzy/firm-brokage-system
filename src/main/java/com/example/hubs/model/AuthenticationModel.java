@@ -5,10 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomerModel {
+public class AuthenticationModel {
 
-    private String id;
     private String username;
     private String password;
-    private String role;
 }

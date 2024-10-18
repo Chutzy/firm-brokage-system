@@ -1,6 +1,7 @@
 package com.example.hubs.controller;
 
 import com.example.hubs.api.OrderApi;
+import com.example.hubs.constants.OrderStatus;
 import com.example.hubs.infra.MapperService;
 import com.example.hubs.model.CreateOrderModel;
 import com.example.hubs.model.ListOrderModel;
@@ -37,7 +38,8 @@ public class OrderController implements OrderApi {
 
     @Override
     public BaseResponse update(UpdateOrderRequest request) {
-        orderService.update(mapper.map(request, UpdateOrderModel.class));
+        OrderStatus orderStatus = OrderStatus.valueOf(request.getUpdateStatus());
+        orderService.update(new UpdateOrderModel(request.getId(), orderStatus));
         return new BaseResponse();
     }
 }

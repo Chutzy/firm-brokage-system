@@ -46,7 +46,7 @@ public class OrderServiceImpl implements OrderService {
                     throw new CustomException("there is a pending order for customer");
                 });
         Asset asset = assetRepository.findAssetsByModel(new ListAssetModel(model.getCustomerId(), model.getAssetName(), null, null))
-                .stream().findFirst().orElse(null);
+                .stream().findFirst().orElseThrow(() -> new CustomException("no funds found"));
         createOrderValidations(asset, model);
         calculateCreateOrder(asset, model);
         saveNewOrder(model);
@@ -55,8 +55,10 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public void update(UpdateOrderModel model) {
-        Order order = orderRepository.findOrderByCustomerIdAndStatus(model.getCustomerId(), PENDING.getValue()).orElseThrow(() -> new CustomException("order not found"));
-        Asset asset = assetRepository.findAssetsByModel(new ListAssetModel(model.getCustomerId(), null, null, null)).stream().findFirst().orElseThrow(() -> new CustomException("no assets found"));
+        Order order = orderRepository.findOrderByCustomerIdAndStatus(model.getCustomerId(), PENDING.getValue())
+                .orElseThrow(() -> new CustomException("order not found"));
+        Asset asset = assetRepository.findAssetsByModel(new ListAssetModel(model.getCustomerId(), null, null, null))
+                .stream().findFirst().orElseThrow(() -> new CustomException("no assets found"));
         if (model.getOrderStatus().equals(CANCELLED)) {
             calculateCancelOrder(asset, order);
         }
@@ -80,9 +82,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private void createOrderValidations(Asset asset, CreateOrderModel model) {
-        if (asset == null) {
-            throw new CustomException("asset not found");
-        }
         if (ORDER_SIDE_BUY.equals(model.getOrderSide()) && asset.getUsableSize() < model.getSize() * model.getPrice()) {
             throw new CustomException("insufficient funds");
         }

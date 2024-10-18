@@ -1,14 +1,12 @@
-package com.example.hubs.model;
+package com.example.hubs.response;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CustomerModel {
+public class CustomerResponse {
 
-    private String id;
     private String username;
-    private String password;
     private String role;
 }
